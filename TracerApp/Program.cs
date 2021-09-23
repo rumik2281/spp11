@@ -48,7 +48,7 @@ namespace TracerApp
 
         static void Main()
         {
-            var filePath = "/Users/vladislavmajskij/Desktop/";
+            var filePath = "/Users/KIRYL/Desktop/";
             Thread thread1 = new Thread(Method1);
             Thread thread2 = new Thread(Method1);
 
@@ -58,7 +58,7 @@ namespace TracerApp
             thread1.Join();
             thread2.Join();
             
-            _serializer = new TraceResultJsonSerializer(new SerializeOption(Console.Out, true));
+            _serializer = new JSONSerializer(new SerializeOption(Console.Out, true));
             _serializer.Serialize(tracer.GetTraceResult());
 
             using (var fs = new FileStream(filePath + "test.json", FileMode.Create))
@@ -69,7 +69,7 @@ namespace TracerApp
             }
             
             Console.WriteLine();
-            _serializer = new TraceResultXmlSerializer(new SerializeOption(Console.Out, true));
+            _serializer = new XMLSerializer(new SerializeOption(Console.Out, true));
             _serializer.Serialize(tracer.GetTraceResult());
 
             using (var fs = new FileStream(filePath + "test.xml", FileMode.Create))

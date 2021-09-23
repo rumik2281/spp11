@@ -5,9 +5,9 @@ using TracerApp.Serializers;
 
 namespace TracerApp.Serializers.Impl
 {
-    public class TraceResultJsonSerializer : AbstractSerializer<TraceResult>
+    public class JSONSerializer : AbstractSerializer<TraceResult>
     {
-        public TraceResultJsonSerializer(SerializeOption serializeOption) : base(serializeOption) { }
+        public JSONSerializer(SerializeOption serializeOption) : base(serializeOption) { }
 
         public override void Serialize(TraceResult data)
         {

@@ -7,10 +7,10 @@ using TracerApp.Serializers;
 
 namespace TracerApp.Serializers.Impl
 {
-    public class TraceResultXmlSerializer : AbstractSerializer<TraceResult>
+    public class XMLSerializer : AbstractSerializer<TraceResult>
     {
        
-        public TraceResultXmlSerializer(SerializeOption serializeOption) : base(serializeOption) { }
+        public XMLSerializer(SerializeOption serializeOption) : base(serializeOption) { }
 
         public override void Serialize(TraceResult data)
         {
