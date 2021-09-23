@@ -1,6 +1,6 @@
 namespace TracerApp.Serializers
 {
-    public abstract class AbstractSerializer<T> : ISerializer<T>
+    public abstract class AbstractSerializer<T>
     {
         public SerializeOption Option { get; set; }
         

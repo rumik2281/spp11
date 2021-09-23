@@ -19,7 +19,7 @@ namespace TracerApp
             tracer.StartTrace();
             Method2();
             Method3();
-            Thread.Sleep(14);
+            Thread.Sleep(11);
             tracer.StopTrace();
         }
 
@@ -27,14 +27,14 @@ namespace TracerApp
         {
             tracer.StartTrace();
             Method4();
-            Thread.Sleep(16);
+            Thread.Sleep(7);
             tracer.StopTrace();
         }
 
         static void Method3()
         {
             tracer.StartTrace();
-            Thread.Sleep(11);
+            Thread.Sleep(9);
             tracer.StopTrace();
         }
 
