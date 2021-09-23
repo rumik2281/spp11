@@ -1,7 +1,5 @@
 using System.Text.Json;
-using TracerApp.Serializers;
 using Tracer.result;
-using TracerApp.Serializers;
 
 namespace TracerApp.Serializers.Impl
 {

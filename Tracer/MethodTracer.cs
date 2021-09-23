@@ -18,14 +18,14 @@ namespace Tracer
         [JsonPropertyName("methods")]
         public List<MethodTracer> Methods { get; internal set; }
 
-        private readonly Stopwatch Stopwatch;
+        private readonly Stopwatch _stopwatch;
 
         public MethodTracer(string className, string methodName)
         {
             ClassName = className;
             MethodName = methodName;
             Methods = new List<MethodTracer>();
-            Stopwatch = new Stopwatch();
+            _stopwatch = new Stopwatch();
         }
 
         internal MethodTracer GetTraceResult()
@@ -43,13 +43,13 @@ namespace Tracer
 
         internal void StartTrace()
         {
-            Stopwatch.Start();
+            _stopwatch.Start();
         }
 
         internal void StopTrace()
         {
-            Stopwatch.Stop();
-            ElapsedTime = Stopwatch.Elapsed.TotalMilliseconds;
+            _stopwatch.Stop();
+            ElapsedTime = _stopwatch.Elapsed.TotalMilliseconds;
         }
     }
 }

@@ -1,9 +1,7 @@
 using System.Linq;
 using System.Xml.Linq;
-using TracerApp.Serializers;
 using Tracer;
 using Tracer.result;
-using TracerApp.Serializers;
 
 namespace TracerApp.Serializers.Impl
 {

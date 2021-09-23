@@ -3,7 +3,6 @@ using System.IO;
 using System.Threading;
 using TracerApp.Serializers;
 using TracerApp.Serializers.Impl;
-using TracerApp.Serializers;
 using Tracer;
 using Tracer.result;
 
@@ -46,39 +45,46 @@ namespace TracerApp
             tracer.StopTrace();
         }
 
-        static void Main()
+        private static void StartThreads()
         {
-            var filePath = "/Users/KIRYL/Desktop/";
-            Thread thread1 = new Thread(Method1);
-            Thread thread2 = new Thread(Method1);
+            var thread1 = new Thread(Method1);
+            var thread2 = new Thread(Method1);
 
             thread1.Start();
             thread2.Start();
 
             thread1.Join();
             thread2.Join();
-            
+        }
+
+        private static void SerializeToJson(string filePath)
+        {
             _serializer = new JSONSerializer(new SerializeOption(Console.Out, true));
             _serializer.Serialize(tracer.GetTraceResult());
 
-            using (var fs = new FileStream(filePath + "test.json", FileMode.Create))
-            using (var sw = new StreamWriter(fs))
-            {
-                _serializer.Option = new SerializeOption(sw, true);
-                _serializer.Serialize(tracer.GetTraceResult());
-            }
-            
-            Console.WriteLine();
+            using var fs = new FileStream(filePath + "test.json", FileMode.Create);
+            using var sw = new StreamWriter(fs);
+            _serializer.Option = new SerializeOption(sw, true);
+            _serializer.Serialize(tracer.GetTraceResult());
+        }
+
+        private static void SerializeToXml(string filePath)
+        {
             _serializer = new XMLSerializer(new SerializeOption(Console.Out, true));
             _serializer.Serialize(tracer.GetTraceResult());
 
-            using (var fs = new FileStream(filePath + "test.xml", FileMode.Create))
-            using (var sw = new StreamWriter(fs))
-            {
-                _serializer.Option = new SerializeOption(sw, true);
-                _serializer.Serialize(tracer.GetTraceResult());
-            }
-
+            using var fs = new FileStream(filePath + "test.xml", FileMode.Create);
+            using var sw = new StreamWriter(fs);
+            _serializer.Option = new SerializeOption(sw, true);
+            _serializer.Serialize(tracer.GetTraceResult());
+        }
+        static void Main()
+        {
+            const string filePath = "/Users/KIRYL/Desktop/";
+            StartThreads();
+            SerializeToJson(filePath);
+            Console.WriteLine();
+            SerializeToXml(filePath);
             Console.ReadKey();
         }
     }
