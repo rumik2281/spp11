@@ -26,7 +26,6 @@ namespace Tracer
             var methodBase = new StackTrace().GetFrame(1).GetMethod();
             var methodTracer = new MethodTracer(methodBase.ReflectedType.Name, methodBase.Name);
             var threadTracer = GetThreadTracer(Thread.CurrentThread.ManagedThreadId);
-
             threadTracer.StartTrace(methodTracer);
         }
 

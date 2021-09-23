@@ -5,7 +5,7 @@ using Tracer.result;
 
 namespace TracerApp.Serializers.Impl
 {
-    public class XMLSerializer : AbstractSerializer<TraceResult>
+    public class XMLSerializer : AbstractSerialize<TraceResult>
     {
        
         public XMLSerializer(SerializeOption serializeOption) : base(serializeOption) { }

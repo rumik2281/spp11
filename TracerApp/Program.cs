@@ -12,7 +12,7 @@ namespace TracerApp
     class Program
     {
         private static TimeTracer tracer = new TimeTracer();
-        private static AbstractSerializer<TraceResult> _serializer;
+        private static AbstractSerialize<TraceResult> _serializer;
 
         static void Method1()
         {
@@ -72,7 +72,6 @@ namespace TracerApp
         {
             _serializer = new XMLSerializer(new SerializeOption(Console.Out, true));
             _serializer.Serialize(tracer.GetTraceResult());
-
             using var fs = new FileStream(filePath + "test.xml", FileMode.Create);
             using var sw = new StreamWriter(fs);
             _serializer.Option = new SerializeOption(sw, true);

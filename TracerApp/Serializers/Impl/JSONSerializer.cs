@@ -3,7 +3,7 @@ using Tracer.result;
 
 namespace TracerApp.Serializers.Impl
 {
-    public class JSONSerializer : AbstractSerializer<TraceResult>
+    public class JSONSerializer : AbstractSerialize<TraceResult>
     {
         public JSONSerializer(SerializeOption serializeOption) : base(serializeOption) { }
 
